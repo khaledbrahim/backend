@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: immopilot
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+  datasource:
+    url: jdbc:postgresql://localhost:5432/immopilot
+    username: osc
+    password: osc
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    properties:
+      hibernate:
+        format_sql: true
+        # Enable 2nd level cache as requested
+        cache:
+          use_second_level_cache: true
+          region:
+            factory_class: org.hibernate.cache.jcache.internal.JCacheRegionFactory
+  modulith:
+    # Basic Modulith config if needed
+    republish-outstanding-events-on-restart: true
+
+logging:
+  level:
+    org.springframework.modulith: INFO
+    com.immopilot: DEBUG
